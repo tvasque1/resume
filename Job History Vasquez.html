@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tony Vasquez - Executive Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+        
+        .name {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info span {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #764ba2;
+        }
+        
+        .professional-summary {
+            font-size: 1.1em;
+            text-align: justify;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .competency-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 2px solid #e8f2ff;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .competency-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .competency-item:hover::before {
+            left: 100%;
+        }
+        
+        .competency-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .job {
+            margin-bottom: 35px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .job-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            position: relative;
+        }
+        
+        .job-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .company-info {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .job-content {
+            padding: 25px;
+        }
+        
+        .job-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .job-content li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            text-align: justify;
+        }
+        
+        .job-content li::before {
+            content: '▶';
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .sub-role {
+            background: #f8f9ff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .sub-role-title {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+        
+        .skill-category-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-category li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+        
+        .education-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .education-school {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .education-degree {
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+        
+        .print-friendly {
+            display: none;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-friendly {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2em;
+                letter-spacing: 1px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .contact-info span {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="name">TONY VASQUEZ</div>
+            <div class="contact-info">
+                <span>📞 (210) 702-7635</span>
+                <span>✉️ tvasque@outlook.com</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="professional-summary">
+                    Forward-thinking executive professional with a diverse background in business including Business Development, Operations, Financial Planning & Analysis, Investor Relations, Financial Reporting, Mergers & Acquisitions, and Management Consulting. Proven track record of driving growth and operational excellence across multiple industries.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="competencies">
+                    <div class="competency-item">Business Strategy & Planning</div>
+                    <div class="competency-item">Data Analytics & KPI Creation</div>
+                    <div class="competency-item">Competitor Analysis & Benchmarking</div>
+                    <div class="competency-item">Financial Reporting</div>
+                    <div class="competency-item">Business Development</div>
+                    <div class="competency-item">Bank & Investor Relations</div>
+                    <div class="competency-item">Process Engineering</div>
+                    <div class="competency-item">Project Management</div>
+                    <div class="competency-item">Capital Management</div>
+                    <div class="competency-item">Business Entity Creation</div>
+                    <div class="competency-item">Mergers & Acquisitions</div>
+                    <div class="competency-item">ERP Implementation</div>
+                    <div class="competency-item">Cash Flow Management</div>
+                    <div class="competency-item">Monthly Close Management</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Client Solutions Director (Business Development)</div>
+                        <div class="company-info">Robert Half Staffing • San Antonio, TX • 2022 - March 2025</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Consistently grew business portfolio by strategically acquiring and managing 50+ new enterprise clients across multiple industries</li>
+                            <li>Developed and implemented targeted sales strategies that exceeded quarterly client acquisition targets by 25% year-over-year</li>
+                            <li>Negotiated complex service agreements resulting in $2M+ in new contract value within 18 months</li>
+                            <li>Cultivated long-term client relationships through comprehensive talent needs assessments and customized staffing solutions</li>
+                            <li>Designed innovative client acquisition approaches that expanded Robert Half's market penetration in competitive sectors</li>
+                            <li>Maintained high client retention rate by serving as strategic advisor and proactively addressing evolving business requirements</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Chief Operating Officer</div>
+                        <div class="company-info">Vinculum Trucking • San Antonio, TX • 2021 - 2024</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Reduced operational expenses by 18% through strategic fleet management and process optimization</li>
+                            <li>Implemented fleet management software improving tracking efficiency and operational visibility</li>
+                            <li>Developed driver retention program decreasing turnover rates by 15%</li>
+                            <li>Secured six new regional transportation contracts, expanding local market presence</li>
+                            <li>Established comprehensive HR policies and compliance programs</li>
+                            <li>Identified and secured key client relationships, increasing annual revenue by 35%</li>
+                            <li>Ensured DOT regulatory compliance through comprehensive safety training programs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Vice President, Financial Planning, Reporting & Analysis</div>
+                        <div class="company-info">Southwest Business Corporation • San Antonio, TX • October 2017 - February 2021</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Established and led financial planning and reporting process for $1B entity including implementation of multiple ERP systems</li>
+                            <li>Achieved debt expense reduction and compliance monitoring through strategic refinance and rate swaps</li>
+                            <li>Collaborated with 16 division CEOs on all financial plans and major revenue or cost decisions</li>
+                            <li>Created KPI and public benchmarking performance metrics for consolidated entity and 16 divisions</li>
+                            <li>Mentored and managed staff of 8 accountants and analysts with monthly close and reporting requirements</li>
+                            <li>Led multiple M&A engagements and maintained corresponding financing relationships</li>
+                            <li>Led ERP implementation of Power BI, Workday Financials and Adaptive Planning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Management Consultant - Director of Financial Planning and Analysis</div>
+                        <div class="company-info">Argo Group International • San Antonio, TX • September 2011 - September 2017</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Created corporate financial reporting package driving executive decision making for $2B entity</li>
+                            <li>Created online interactive executive dashboard to track KPIs and business performance metrics</li>
+                            <li>Worked with Actuarial Finance to create models for IBNR estimations</li>
+                            <li>Contributed financial data for Board of Director presentations and rating agency meetings</li>
+                            <li>Maintained quarterly reporting for public earnings calls and management meetings</li>
+                            <li>Developed capital tracking and management methodologies and reporting systems</li>
+                            <li>Implemented financial planning software (Cognos Planning) across organization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Division CFO / Manager, Strategy and Innovation / FP&A</div>
+                        <div class="company-info">Harland Clarke/Clarke American • San Antonio, TX • 2006 - 2010</div>
+                    </div>
+                    <div class="job-content">
+                        <div class="sub-role">
+                            <div class="sub-role-title">Division CFO (2009-2010)</div>
+                            <ul>
+                                <li>Directed all financial decisions of newly established business unit ($30 million)</li>
+                                <li>Evaluated and priced new products and services to expand market presence</li>
+                                <li>Established contingency and restructuring plans to align expenses to revenue stream</li>
+                                <li>Conducted screening and due diligence of potential acquisition candidates</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="sub-role">
+                            <div class="sub-role-title">Financial Planning & Analysis - Payment Solutions (May 2007 - Jan 2008)</div>
+                            <ul>
+                                <li>Led financial planning and analysis of largest business unit ($1.1 billion) post-merger</li>
+                                <li>Managed budget and forecast of combined Payment Solutions business unit</li>
+                                <li>Developed monthly revenue reporting across multiple diverse financial systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="sub-role">
+                            <div class="sub-role-title">Strategic Development - Innovation Group (Nov 2009 - Sep 2010)</div>
+                            <ul>
+                                <li>Monitored and examined new ideas for viability as new products/services</li>
+                                <li>Developed go-to-market financial scenarios for new products/services</li>
+                                <li>Established metrics to track new products through development and post-launch</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Small Business Consultant</div>
+                        <div class="company-info">Self Employed • Dallas, TX • 2004 - 2006</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Evaluated financial and business needs of clients ranging from <$200K to $300 million</li>
+                            <li>Created financial models to forecast and track future business results</li>
+                            <li>Established critical performance metrics and monitoring systems</li>
+                            <li>Conducted business valuation and acquisition due diligence ($200K to $7MM)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Investor Relations Associate</div>
+                        <div class="company-info">Hollywood Casino Corp. • Dallas, TX • 2001 - 2003</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Assisted in quarterly earnings releases and prepared CFO for analyst conference calls</li>
+                            <li>Created and monitored $400 million corporate budget across 14 departments</li>
+                            <li>Assisted in structuring $39 million debt refinancing</li>
+                            <li>Assisted in sale of Hollywood Casino Corp. to Penn National Gaming</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Mergers and Acquisitions Associate</div>
+                        <div class="company-info">Affiliated Computer Services • Dallas, TX • 1999 - 2001</div>
+                    </div>
+                    <div class="job-content">
+                        <ul>
+                            <li>Initiated over 40 due diligence projects on potential acquisition candidates</li>
+                            <li>Created forecasts for combined companies to determine accretion potential</li>
+                            <li>Participated in 4 divestitures, including $200 million Electronic Commerce Group</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="skill-category-title">ERP Systems</div>
+                        <ul>
+                            <li>SAP</li>
+                            <li>Oracle/NetSuite ERP</li>
+                            <li>Workday Financials</li>
+                            <li>QuickBooks</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">Financial Planning & Reporting</div>
+                        <ul>
+                            <li>Hyperion Essbase</li>
+                            <li>Hyperion Planning</li>
+                            <li>Adaptive Insights</li>
+                            <li>Cognos Planning</li>
+                            <li>Cognos BI/TM1</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">Business Intelligence</div>
+                        <ul>
+                            <li>Power BI</li>
+                            <li>Tableau Reporting</li>
+                            <li>Advanced Excel</li>
+                            <li>Financial Modeling</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">CRM & Emerging Tech</div>
+                        <ul>
+                            <li>Salesforce</li>
+                            <li>Machine Learning</li>
+                            <li>Bot Development</li>
+                            <li>Advanced PowerPoint</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education & Service</h2>
+                <div class="education-item">
+                    <div class="education-school">Texas A&M University</div>
+                    <div class="education-degree">Bachelor of Science, Accounting • Bachelor of Science, Finance</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-school">United States Marine Corps Reserve</div>
+                    <div class="education-degree">Galveston, Texas • 1993 - 2001</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
